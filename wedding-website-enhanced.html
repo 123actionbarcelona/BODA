@@ -3,863 +3,870 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marina & Luifer - Nuestra Boda</title>
+    <title>Marina & Luifer - Nuestra Historia de Amor</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Amatic+SC:wght@700&family=Oswald:wght@400;600&family=Permanent+Marker&family=Lora:wght@400;500&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         :root {
-            --primary-red: #d32f2f;
-            --primary-green: #00695c;
-            --warm-brown: #5d4037;
-            --light-brown: #795548;
-            --cream: #faf8f3;
-            --white: #ffffff;
+            --retro-cream: #FAF3E0;
+            --retro-brown: #6B4226;
+            --retro-red: #CC5543;
+            --retro-teal: #5F9EA0;
+            --retro-coral: #E07B5B;
+            --retro-mint: #87CEEB;
+            --retro-gold: #DAA520;
+            --shadow-dark: rgba(107, 66, 38, 0.3);
         }
-
+        
         body {
-            font-family: 'Georgia', serif;
-            background-color: var(--cream);
-            color: var(--warm-brown);
+            font-family: 'Lora', serif;
+            background-color: var(--retro-cream);
+            color: var(--retro-brown);
             overflow-x: hidden;
-            line-height: 1.6;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 150px, rgba(107, 66, 38, 0.02) 150px, rgba(107, 66, 38, 0.02) 151px);
         }
-
-        /* Loading Screen */
+        
+        /* Loading Animation */
         .loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: var(--cream);
+            height: 100vh;
+            background: var(--retro-cream);
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             z-index: 9999;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s, visibility 0.5s;
         }
-
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
         .loader-heart {
             font-size: 60px;
-            animation: heartbeat 1.2s ease-in-out infinite;
+            color: var(--retro-red);
+            animation: heartbeat 1s ease-in-out infinite;
         }
-
+        
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
         }
-
-        /* Hero Section with Parallax */
-        .hero {
-            height: 100vh;
+        
+        /* Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--retro-cream);
+            box-shadow: 0 2px 10px var(--shadow-dark);
+        }
+        
+        .nav-ribbon {
+            background: var(--retro-red);
+            height: 80px;
             position: relative;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120%;
-            background-image: url('https://detectiveclub.es/wp-content/uploads/2025/06/boda-fondo-movil.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            transform: translateY(0);
-            transition: transform 0.3s ease-out;
-            will-change: transform;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(250, 248, 243, 0) 0%,
-                rgba(250, 248, 243, 0.2) 50%,
-                rgba(250, 248, 243, 0.8) 100%
-            );
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            z-index: 10;
-        }
-
-        .scroll-indicator::before {
-            content: '↓';
-            font-size: 30px;
-            color: var(--primary-red);
-            opacity: 0.8;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* Enhanced Navigation */
-        .nav-wrapper {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 40px;
-            padding: 15px 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            max-width: 90%;
-            transition: all 0.3s ease;
-        }
-
-        .nav-wrapper.scrolled {
-            bottom: auto;
-            top: 20px;
-            background: rgba(255, 255, 255, 0.98);
-        }
-
-        .nav-wrapper ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            align-items: center;
-        }
-
-        .nav-wrapper ul::-webkit-scrollbar {
-            display: none;
-        }
-
-        .nav-wrapper a {
-            color: var(--warm-brown);
-            text-decoration: none;
-            font-size: 0.95rem;
-            white-space: nowrap;
-            padding: 8px 16px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            position: relative;
             overflow: hidden;
         }
-
-        .nav-wrapper a::before {
+        
+        .nav-ribbon::before,
+        .nav-ribbon::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .nav-wrapper a:hover {
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .nav-wrapper a:hover::before {
-            left: 0;
-        }
-
-        /* Sections with Reveal Animation */
-        section {
-            padding: 80px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .section-content {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .section-content.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 400;
-            letter-spacing: 3px;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
-            border-radius: 2px;
-        }
-
-        /* Enhanced Image Cards */
-        .image-card {
-            width: 100%;
-            margin-bottom: 60px;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .image-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                transparent 0%,
-                rgba(0,0,0,0.1) 100%
-            );
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-
-        .image-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 35px 80px rgba(0,0,0,0.2);
-        }
-
-        .image-card:hover::before {
-            opacity: 1;
-        }
-
-        .image-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.6s ease;
-        }
-
-        .image-card:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Story Section with Timeline */
-        .story-timeline {
-            position: relative;
-            padding: 40px 0;
-        }
-
-        .story-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(
-                to bottom,
-                var(--primary-red),
-                var(--primary-green)
-            );
-            transform: translateX(-50%);
-        }
-
-        .story-item {
-            position: relative;
-            margin-bottom: 60px;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.6s ease;
-        }
-
-        .story-item.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .story-item:nth-child(even) {
-            text-align: right;
-            transform: translateX(50px);
-        }
-
-        .story-item:nth-child(even).visible {
-            transform: translateX(0);
-        }
-
-        .story-dot {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: var(--primary-red);
-            border-radius: 50%;
-            border: 4px solid var(--cream);
-            z-index: 1;
-        }
-
-        /* Enhanced Info Cards */
-        .info-card {
-            background: white;
-            border-radius: 35px;
-            padding: 50px 35px;
-            margin: 40px 0;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(
-                circle,
-                rgba(211, 47, 47, 0.05) 0%,
-                transparent 70%
-            );
+            bottom: -20px;
+            width: 50px;
+            height: 50px;
+            background: var(--retro-red);
             transform: rotate(45deg);
-            transition: all 0.6s ease;
         }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+        
+        .nav-ribbon::before {
+            left: -25px;
         }
-
-        .info-card:hover::before {
-            transform: rotate(90deg);
+        
+        .nav-ribbon::after {
+            right: -25px;
         }
-
-        .info-card h3 {
-            font-size: 2rem;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 25px;
-            font-weight: 400;
-        }
-
-        .info-card p {
-            font-size: 1.15rem;
-            color: var(--warm-brown);
-            line-height: 1.8;
+        
+        .nav-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
             position: relative;
             z-index: 1;
         }
-
-        .icon-large {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            display: block;
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: transform 0.3s;
+            text-transform: uppercase;
+        }
+        
+        .nav-item:hover {
+            transform: translateY(-3px);
+            text-shadow: 0 3px 5px rgba(0,0,0,0.3);
+        }
+        
+        .nav-badge {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--retro-brown);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-dark);
+            z-index: 2;
+        }
+        
+        .nav-badge h1 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2rem;
+            color: var(--retro-cream);
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, transparent 0%, var(--retro-cream) 70%);
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+        
+        .sunburst {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            background: repeating-conic-gradient(
+                from 0deg at 50% 50%,
+                var(--retro-coral) 0deg 10deg,
+                var(--retro-mint) 10deg 20deg
+            );
+            opacity: 0.1;
+            animation: rotate 60s linear infinite;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        /* CAMBIO: Foto de cabecera más grande */
+        .photo-collage {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto 40px;
+        }
+        
+        .main-photo {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-5deg);
+            border: 10px solid white;
+            box-shadow: 0 10px 30px var(--shadow-dark);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .main-photo:hover {
+            transform: translate(-50%, -50%) rotate(0deg) scale(1.05);
+        }
+        
+        .main-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.1) saturate(1.2);
+        }
+        
+        .stamp {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: var(--retro-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px dashed white;
+            transform: rotate(15deg);
+            box-shadow: 0 5px 15px var(--shadow-dark);
+        }
+        
+        .stamp-1 {
+            top: 10px;
+            right: 10px;
+            background: var(--retro-red);
             animation: float 3s ease-in-out infinite;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        
+        .stamp-2 {
+            bottom: 10px;
+            left: 10px;
+            animation: float 3s ease-in-out infinite 0.5s;
         }
-
-        /* Enhanced RSVP Section */
-        .rsvp-section {
+        
+        .stamp span {
+            color: white;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.4rem;
             text-align: center;
-            padding: 100px 30px;
-            background: linear-gradient(
-                135deg,
-                rgba(211, 47, 47, 0.08),
-                rgba(0, 105, 92, 0.08)
-            );
-            border-radius: 40px;
-            margin: 60px 20px;
-            position: relative;
-            overflow: hidden;
+            line-height: 1.2;
         }
-
-        .rsvp-section::before,
-        .rsvp-section::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                rgba(255, 255, 255, 0.8),
-                transparent
-            );
+        
+        .hero-title {
+            margin-bottom: 30px;
         }
-
-        .rsvp-section::before {
-            width: 300px;
-            height: 300px;
-            top: -150px;
-            left: -150px;
-        }
-
-        .rsvp-section::after {
-            width: 200px;
-            height: 200px;
-            bottom: -100px;
-            right: -100px;
-        }
-
-        .rsvp-button {
+        
+        .hero-title h2 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: var(--retro-red);
+            text-shadow: 3px 3px 0 var(--retro-coral);
+            margin: 0;
+            transform: rotate(-2deg);
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            animation: wiggle 2s ease-in-out infinite;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2.5rem;
+            color: var(--retro-teal);
+            margin: 20px 0;
+            letter-spacing: 3px;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: rotate(15deg) translateY(0); }
+            50% { transform: rotate(15deg) translateY(-10px); }
+        }
+        
+        /* Event Cards Section */
+        .events-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--retro-cream) 0%, #FFF5E6 100%);
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .ribbon-banner {
+            position: relative;
+            display: inline-block;
+            background: var(--retro-teal);
             color: white;
             padding: 20px 60px;
-            font-size: 1.2rem;
-            border-radius: 60px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            margin: 0 40px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px var(--shadow-dark);
         }
-
-        .rsvp-button::before {
+        
+        .ribbon-banner::before,
+        .ribbon-banner::after {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
-            transition: left 0.3s ease;
-            z-index: -1;
+            width: 0;
+            height: 0;
+            border-style: solid;
         }
-
-        .rsvp-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+        
+        .ribbon-banner::before {
+            left: -40px;
+            border-width: 35px 40px 35px 0;
+            border-color: transparent var(--retro-teal) transparent transparent;
         }
-
-        .rsvp-button:hover::before {
-            left: 0;
+        
+        .ribbon-banner::after {
+            right: -40px;
+            border-width: 35px 0 35px 40px;
+            border-color: transparent transparent transparent var(--retro-teal);
         }
-
-        /* Gift Section Enhanced */
-        .gift-container {
-            margin: 60px 0;
-        }
-
-        .gift-image {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto 60px;
-            display: block;
-            border-radius: 30px;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.2);
-            transition: all 0.4s ease;
-        }
-
-        .gift-image:hover {
-            transform: scale(1.05) rotate(1deg);
-            box-shadow: 0 40px 90px rgba(0,0,0,0.25);
-        }
-
-        .gift-options {
+        
+        .events-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 60px;
+            align-items: start;
         }
-
-        @media (min-width: 600px) {
-            .gift-options {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .gift-card {
-            background: white;
-            border-radius: 30px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+        
+        .event-card {
             position: relative;
-            overflow: hidden;
-        }
-
-        .gift-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
-            border-radius: 30px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .gift-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
-        }
-
-        .gift-card:hover::before {
-            opacity: 1;
-        }
-
-        .gift-card:hover .icon-large {
-            animation-duration: 0.5s;
-        }
-
-        .gift-card h4 {
-            font-size: 1.5rem;
-            margin: 20px 0;
-            color: var(--warm-brown);
-            font-weight: 400;
-            transition: all 0.3s ease;
-        }
-
-        .gift-card:hover h4 {
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .gift-card .iban {
-            font-size: 0.95rem;
-            color: var(--light-brown);
-            margin-top: 20px;
-            font-family: 'Courier New', monospace;
-            background: var(--cream);
-            padding: 15px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .gift-card:hover .iban {
             background: white;
+            border: 3px solid var(--retro-brown);
+            padding: 30px;
+            transform: rotate(-1deg);
+            transition: all 0.3s;
+            box-shadow: 5px 5px 0 var(--retro-brown);
+        }
+        
+        .event-card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+        
+        .event-card:hover {
+            transform: rotate(0deg) translateY(-5px);
+            box-shadow: 8px 8px 0 var(--retro-brown);
+        }
+        
+        .event-stamp {
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            background: var(--retro-coral);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            transform: rotate(15deg);
+            box-shadow: 0 3px 10px var(--shadow-dark);
+            border: 3px solid white;
+        }
+        
+        .event-image-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 5px solid var(--retro-cream);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .event-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .event-card:hover .event-image {
             transform: scale(1.05);
         }
-
-        /* Enhanced Timeline */
-        .timeline {
-            position: relative;
-            padding: 40px 0;
-            max-width: 700px;
-            margin: 0 auto;
+        
+        .event-details {
+            text-align: center;
         }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 80px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(
-                to bottom,
-                var(--primary-red),
-                var(--primary-green)
-            );
-            border-radius: 2px;
+        
+        .event-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--retro-brown);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        @media (min-width: 768px) {
-            .timeline::before {
-                left: 100px;
-            }
+        
+        .event-date {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.8rem;
+            color: var(--retro-red);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 40px;
-            gap: 30px;
-            position: relative;
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.6s ease;
+        
+        .event-location {
+            font-family: 'Amatic SC', cursive;
+            font-size: 1.6rem;
+            color: var(--retro-teal);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
-
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 70px;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 4px solid var(--primary-red);
-            border-radius: 50%;
-            z-index: 1;
-            transition: all 0.3s ease;
-        }
-
-        @media (min-width: 768px) {
-            .timeline-item::before {
-                left: 90px;
-            }
-        }
-
-        .timeline-item:hover::before {
-            transform: scale(1.3);
-            background: var(--primary-red);
-        }
-
-        .timeline-time {
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
+        
+        .event-description {
             font-size: 1.1rem;
-            min-width: 90px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
+            line-height: 1.8;
+            color: var(--retro-brown);
+            font-style: italic;
+            padding: 0 20px;
         }
-
-        .timeline-item:hover .timeline-time {
-            transform: scale(1.1);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-
-        .timeline-text {
-            font-size: 1.2rem;
-            color: var(--warm-brown);
-            flex: 1;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover .timeline-text {
-            transform: translateX(10px);
-            color: var(--primary-red);
-        }
-
-        /* Enhanced Footer */
-        footer {
-            text-align: center;
+        
+        /* Dress Code Section */
+        .dresscode-section {
             padding: 100px 20px;
-            background: linear-gradient(
-                135deg,
-                rgba(211, 47, 47, 0.1),
-                rgba(0, 105, 92, 0.1)
-            );
-            margin-top: 80px;
+            background: var(--retro-cream);
+        }
+
+        .polaroid-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px 20px 70px 20px;
+            box-shadow: 5px 5px 15px var(--shadow-dark);
+            transform: rotate(-3deg);
+            transition: transform 0.3s;
+            position: relative;
+            text-align: center;
+        }
+        .polaroid-card:hover {
+            transform: rotate(0deg);
+        }
+        .polaroid-pin {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--retro-gold);
+            border-radius: 50%;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+            font-size: 20px;
+            line-height: 40px;
+            color: white;
+        }
+        .polaroid-card h3 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2.5rem;
+            color: var(--retro-red);
+            margin: 20px 0 15px;
+        }
+         .polaroid-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+         }
+        .tip {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fffbe9;
+            border: 1px dashed var(--retro-coral);
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        /* Gifts Section */
+        .gifts-section {
+            padding: 100px 20px;
+            background: var(--retro-mint);
             position: relative;
             overflow: hidden;
         }
-
-        footer::before {
-            content: '💕';
+        
+        .gifts-section::before {
+            content: '';
             position: absolute;
-            font-size: 200px;
-            opacity: 0.05;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--retro-coral),
+                var(--retro-coral) 10px,
+                white 10px,
+                white 20px
+            );
         }
-
-        footer h3 {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        
+        .gifts-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px 40px;
+            border: 3px solid var(--retro-brown);
+            box-shadow: 10px 10px 0 var(--retro-brown);
+            position: relative;
+        }
+        
+        .baby-illustration {
+            position: absolute;
+            top: -50px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            background: var(--retro-coral);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px var(--shadow-dark);
+            transform: rotate(15deg);
+            font-size: 4rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: rotate(15deg) translateY(0); }
+            50% { transform: rotate(15deg) translateY(-10px); }
+        }
+        
+        .gifts-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3rem;
+            color: var(--retro-red);
+            text-align: center;
+            margin-bottom: 40px;
+            transform: rotate(-2deg);
+        }
+        
+        .gift-message {
+            background: var(--retro-cream);
+            border: 2px dashed var(--retro-teal);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .gift-message::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--retro-teal);
+            font-family: 'Georgia', serif;
+        }
+        
+        .gift-message p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--retro-brown);
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .bank-account {
+            background: var(--retro-brown);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bank-account::before {
+            content: '€€€';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 40px;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+        }
+        
+        .bank-account h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            font-weight: 400;
-            animation: heartbeat 2s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-
-        footer p {
-            font-size: 1.3rem;
-            color: var(--warm-brown);
+        
+        .account-number {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            background: white;
+            color: var(--retro-brown);
+            padding: 15px;
+            margin-top: 10px;
+            display: inline-block;
+            box-shadow: inset 0 0 0 2px var(--retro-brown);
+        }
+        
+        /* RSVP Form Section */
+        .rsvp-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #FFF5E6 0%, var(--retro-cream) 100%);
+        }
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border: 3px solid var(--retro-brown);
+            box-shadow: 8px 8px 0 var(--retro-teal);
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-header h2 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 3rem;
+            color: var(--retro-red);
+            letter-spacing: 2px;
             margin-bottom: 10px;
         }
-
-        /* Floating Elements */
-        .floating-hearts {
-            position: fixed;
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .form-group label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--retro-brown);
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+        .radio-group label {
+            font-family: 'Lora', serif;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .radio-group input {
+            margin-right: 8px;
+        }
+        .form-group input[type="text"], .form-group textarea {
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+            padding: 10px;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            border: 2px solid var(--retro-cream);
+            border-radius: 5px;
+            background: #fff;
         }
-
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            animation: float-heart 6s linear infinite;
-            opacity: 0.8;
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
         }
-
-        @keyframes float-heart {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
+        .hidden-field {
+            display: none;
+            margin-top: 15px;
         }
-
-        /* Mobile Optimizations */
-        @media (max-width: 768px) {
-            h2 {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 60px 15px;
-            }
-
-            .info-card {
-                padding: 35px 25px;
-            }
-
-            .rsvp-section {
-                padding: 70px 20px;
-                margin: 40px 10px;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item::before {
-                left: 10px;
-            }
-
-            .timeline-item {
-                gap: 20px;
-            }
-
-            .timeline-time {
-                min-width: 80px;
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
-
-            .timeline-text {
-                font-size: 1.1rem;
-            }
-
-            .story-timeline::before {
-                display: none;
-            }
-
-            .story-item {
-                text-align: center !important;
-                transform: translateY(30px) !important;
-            }
-
-            .story-dot {
-                display: none;
-            }
-        }
-
-        /* Desktop Enhancements */
-        @media (min-width: 768px) {
-            .hero {
-                background-attachment: fixed;
-            }
-
-            h2 {
-                font-size: 3rem;
-            }
-
-            section {
-                padding: 100px 40px;
-            }
-
-            .nav-wrapper {
-                max-width: 700px;
-            }
-
-            .timeline-time {
-                min-width: 110px;
-            }
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--cream);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+        .form-note {
+            font-style: italic;
+            font-size: 0.9rem;
+            background: var(--retro-cream);
+            padding: 10px;
             border-radius: 5px;
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-red);
+        .submit-btn {
+            background: var(--retro-coral);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 5px 5px 0 var(--retro-brown);
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .submit-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 var(--retro-brown);
         }
 
+        /* Footer */
+        .footer {
+            background: var(--retro-brown);
+            color: var(--retro-cream);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+        }
+        
+        .footer-date {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            opacity: 0.8;
+        }
+        
+        .footer-hearts {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 200px;
+            opacity: 0.05;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .nav-badge {
+                position: static;
+                transform: none;
+                order: 1; 
+                width: 100%;
+                text-align: center;
+                margin-top: -20px;
+            }
+            .nav-item {
+                font-size: 0.9rem;
+                order: 2;
+            }
+            
+            .photo-collage {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .main-photo {
+                width: 220px;
+                height: 220px;
+            }
+             .stamp {
+                width: 80px; height: 80px;
+             }
+             .stamp span { font-size: 1rem;}
+            
+            .hero-title h2 {
+                font-size: 3rem;
+            }
+            
+            .events-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .event-card {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+            
+            .gifts-content {
+                padding: 40px 20px;
+            }
+            
+            .baby-illustration {
+                width: 100px;
+                height: 100px;
+                top: -40px;
+                right: -20px;
+                font-size: 3rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Special Effects */
+        .confetti-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 9998;
+        }
+        .confetti {
+            width: 10px;
+            height: 10px;
+            background: var(--retro-coral);
+            position: absolute;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
         /* Print Styles */
         @media print {
-            .nav-wrapper,
-            .scroll-indicator,
-            .floating-hearts {
+            body {
+                background: white;
+            }
+            
+            .nav-wrapper, .loader, .confetti-container, .rsvp-section {
                 display: none;
+            }
+            
+            .hero {
+                margin-top: 0;
+            }
+            
+            .sunburst {
+                display: none;
+            }
+            
+            * {
+                box-shadow: none !important;
+                text-shadow: none !important;
             }
         }
     </style>
@@ -867,380 +874,1309 @@
 <body>
     <!-- Loading Screen -->
     <div class="loader" id="loader">
-        <div class="loader-heart">❤️</div>
+        <div class="loader-heart">♥</div>
     </div>
-
-    <!-- Floating Hearts Background -->
-    <div class="floating-hearts" id="floating-hearts"></div>
-
-    <!-- Hero Section with Parallax -->
-    <section class="hero">
-        <div class="hero-bg" id="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="scroll-indicator"></div>
-    </section>
-
-    <!-- Enhanced Navigation -->
-    <nav class="nav-wrapper" id="nav">
-        <ul>
-            <li><a href="#historia">✨ Historia</a></li>
-            <li><a href="#ceremonia">⛪ Ceremonia</a></li>
-            <li><a href="#fiesta">🎉 Fiesta</a></li>
-            <li><a href="#confirmacion">📝 RSVP</a></li>
-            <li><a href="#dress-code">👗 Dress Code</a></li>
-            <li><a href="#regalo">🎁 Regalo</a></li>
-            <li><a href="#horario">⏰ Horario</a></li>
-        </ul>
+    
+    <!-- Contenedor para efectos -->
+    <div class="confetti-container" id="confetti-container"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-wrapper">
+        <div class="nav-ribbon">
+            <div class="nav-content">
+                <a href="#home" class="nav-item">Inicio</a>
+                <a href="#events" class="nav-item">Eventos</a>
+                <a href="#dresscode" class="nav-item">Dress Code</a>
+                <div class="nav-badge">
+                    <h1>M & L</h1>
+                </div>
+                <a href="#gifts" class="nav-item">Regalos</a>
+                <a href="#confirmacion" class="nav-item">Confirmar</a>
+            </div>
+        </div>
     </nav>
-
-    <!-- Our Story Section with Timeline -->
-    <section id="historia">
-        <div class="section-content">
-            <h2>Nuestra Historia</h2>
-            <div class="story-timeline">
-                <div class="story-item">
-                    <div class="story-dot"></div>
-                    <div class="info-card">
-                        <p><strong>9 años juntos</strong><br>
-                        Miles de risas, aventuras inolvidables y sueños compartidos</p>
-                    </div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="sunburst"></div>
+        
+        <div class="hero-content">
+            <div class="photo-collage">
+                <div class="main-photo">
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda-fondo-movil-300x300.jpg" alt="Marina y Luifer">
                 </div>
-                <div class="story-item">
-                    <div class="story-dot"></div>
-                    <div class="info-card">
-                        <p><strong>El gran día</strong><br>
-                        Ahora queremos compartir con vosotros el momento más especial de nuestras vidas</p>
-                    </div>
+                <div class="stamp stamp-1">
+                    <span>¡NOS<br>CASAMOS!</span>
+                </div>
+                <div class="stamp stamp-2">
+                    <span>SAVE<br>THE<br>DATE</span>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Ceremony Section -->
-    <section id="ceremonia">
-        <div class="section-content">
-            <h2>Ceremonia Religiosa</h2>
-            <div class="image-card">
-                <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda_benasque.png" alt="Ceremonia en Benasque" loading="lazy">
+            
+            <div class="hero-title">
+                <h2>Marina & Luifer</h2>
             </div>
+            <p class="hero-subtitle">Una historia de amor en dos actos</p>
         </div>
     </section>
-
-    <!-- Party Section -->
-    <section id="fiesta">
-        <div class="section-content">
-            <h2>Fiesta Banquete</h2>
-            <div class="image-card">
-                <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda-can-oliver.png" alt="Fiesta en Masia Can Oliver" loading="lazy">
+    
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <div class="section-header">
+            <h3 class="ribbon-banner">NUESTROS EVENTOS</h3>
+        </div>
+        
+        <div class="events-container">
+            <!-- Ceremony Card -->
+            <div class="event-card">
+                <div class="event-stamp">ACTO I</div>
+                <div class="event-image-wrapper">
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda_benasque-212x300.png" alt="Parroquia de Benasque" class="event-image">
+                </div>
+                <div class="event-details">
+                    <h4 class="event-title">La Ceremonia</h4>
+                    <p class="event-date">26 de Julio, 2025</p>
+                    <p class="event-location">Parroquia de Benasque • 16:00h</p>
+                    <p class="event-description">
+                        "Se trata únicamente de la ceremonia, no hay fiesta. No queremos que te sientas con la obligación de tener que venir lejos. Pero si vienes, ¡ya haremos para pasarlo bien!"
+                    </p>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- RSVP Section -->
-    <section id="confirmacion">
-        <div class="section-content">
-            <div class="rsvp-section">
-                <h2>Confirmación de Asistencia</h2>
-                <p style="margin-bottom: 40px; font-size: 1.3rem;">
-                    Por favor, confirmad vuestra asistencia antes del <strong>1 de febrero</strong>
-                </p>
-                <a href="#" class="rsvp-button" onclick="handleRSVP(event)">✉️ Confirmar Asistencia</a>
+            
+            <!-- Party Card -->
+            <div class="event-card">
+                <div class="event-stamp">ACTO II</div>
+                <div class="event-image-wrapper">
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda-can-oliver-212x300.png" alt="Masia Can Oliver" class="event-image">
+                </div>
+                <div class="event-details">
+                    <h4 class="event-title">¡Fiesta de Primavera!</h4>
+                    <p class="event-date">1 de Mayo, 2026</p>
+                    <p class="event-location">Masia Can Oliver • 12:30h</p>
+                    <p class="event-description">
+                        "¡Muy cerca de Barcelona! Hay parking allí mismo. Habrá mucha comida y ganas de divertirnos juntos. ¡Fiesta de primavera!"
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Dress Code Section -->
-    <section id="dress-code">
-        <div class="section-content">
-            <h2>Dress Code</h2>
-            <div class="info-card">
-                <span class="icon-large">👗🌺</span>
-                <h3>Alegre & Veraniego</h3>
+    <section id="dresscode" class="dresscode-section">
+         <div class="section-header">
+            <h3 class="ribbon-banner">DRESS CODE</h3>
+        </div>
+        <div class="polaroid-card">
+            <div class="polaroid-pin">📌</div>
+            <h3>👗🌺 Alegre & Veraniego</h3>
+            <p>Queremos veros radiantes con ropa alegre y cómoda para el calor del verano. ¡No olvidéis traer abanicos! 🪭</p>
+            <div class="tip">
+                💡 <strong>Tip:</strong> Una chaquetita ligera para el aire acondicionado no está de más.
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gifts Section -->
+    <section id="gifts" class="gifts-section">
+        <div class="gifts-content">
+            <div class="baby-illustration">👶</div>
+            
+            <h3 class="gifts-title">¡Regalos con Humor!</h3>
+            
+            <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda-coche-300x200.jpg" alt="Regalo vintage" style="width: 100%; max-width: 400px; margin: 20px auto; display: block; border: 5px solid var(--retro-cream); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+            
+            <div class="gift-message">
                 <p>
-                    Queremos veros radiantes con <strong>ropa alegre y cómoda</strong> para el calor del verano.<br>
-                    <span style="font-size: 1.5rem; margin: 20px 0; display: block;">¡No olvidéis traer abanicos! 🪭</span>
-                </p>
-                <p style="margin-top: 25px; padding: 20px; background: var(--cream); border-radius: 20px;">
-                    💡 <strong>Tip:</strong> Una chaquetita ligera para el aire acondicionado no está de más
+                    No cabemos tres en nuestra furgoneta, así que necesitamos comprar un coche familiar para llevar al peque... 
+                    Si te parece buena idea y quieres colaborar en nuestro cochecito lerée, aquí tienes los datos de nuestra cuenta conjunta.
                 </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Gift Section -->
-    <section id="regalo">
-        <div class="section-content">
-            <h2>Sobre el Regalito</h2>
-            <div class="gift-container">
-                <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda-coche.jpg" alt="Regalo información" class="gift-image" loading="lazy">
-                <div class="gift-options">
-                    <div class="gift-card">
-                        <span class="icon-large">🚗</span>
-                        <h4>Nuevo Coche Familiar</h4>
-                        <p class="iban">IBAN: ES00 0000 0000 0000</p>
-                    </div>
-                    <div class="gift-card">
-                        <span class="icon-large">👶</span>
-                        <h4>Para el Bebé</h4>
-                        <p class="iban">IBAN: ES00 0000 0000 0000</p>
-                    </div>
-                </div>
+            
+            <div class="bank-account">
+                <h4>Cuenta para el "Cochecito"</h4>
+                <div class="account-number">ES12 3456 7890 1234 5678 9012</div>
             </div>
         </div>
     </section>
-
-    <!-- Schedule Section -->
-    <section id="horario">
-        <div class="section-content">
-            <h2>Horario del Gran Día</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-time">12:30</div>
-                    <div class="timeline-text">🥂 Recepción y aperitivos de bienvenida</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">14:00</div>
-                    <div class="timeline-text">🍽️ Banquete nupcial</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">17:00</div>
-                    <div class="timeline-text">🎮 Juegos y actividades sorpresa</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">19:00</div>
-                    <div class="timeline-text">💃 ¡Baile y fiesta hasta el amanecer!</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">02:00</div>
-                    <div class="timeline-text">🌙 Fin de la celebración (para los que aguanten 😉)</div>
-                </div>
+    
+    <!-- RSVP Form Section -->
+    <section id="confirmacion" class="rsvp-section">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>🥂 Confirmación de Asistencia</h2>
+                <p>Por favor, rellena este formulario con sinceridad y mucho amor. ¡Nos hará mucha ilusión contar contigo! 💌</p>
             </div>
+            <form id="rsvp-form">
+                <div class="form-group">
+                    <label>¿Vas a venir a la ceremonia en Benasque?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="ceremonia" value="si"> Sí</label>
+                        <label><input type="radio" name="ceremonia" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Vas a venir a la celebración en Barcelona?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="celebracion" value="si"> Sí</label>
+                        <label><input type="radio" name="celebracion" value="no"> No</label>
+                        <label><input type="radio" name="celebracion" value="duda"> Aún no lo sé</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Vas a venir con compañía?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="acompanante" value="si" id="acompanante-si"> Sí</label>
+                        <label><input type="radio" name="acompanante" value="no" id="acompanante-no"> No</label>
+                    </div>
+                </div>
+                
+                <div class="form-group hidden-field" id="nombre-acompanante-field">
+                    <label for="nombre-acompanante">¿Con quién vendrás? Por favor, indica su nombre completo.</label>
+                    <input type="text" id="nombre-acompanante" name="nombre-acompanante">
+                    <p class="form-note">📌 Importante: Tu acompañante también debe rellenar este formulario. Por favor, pídele que indique en su respuesta que viene de tu parte.</p>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Tienes alguna intolerancia alimenticia o necesidad especial?</label>
+                     <div class="radio-group">
+                        <label><input type="radio" name="alergias" value="si" id="alergias-si"> Sí</label>
+                        <label><input type="radio" name="alergias" value="no" id="alergias-no"> No</label>
+                    </div>
+                </div>
+                
+                <div class="form-group hidden-field" id="alergias-detalles-field">
+                    <label for="alergias-detalles">Por favor, indícanos cuáles:</label>
+                    <textarea id="alergias-detalles" name="alergias-detalles"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Confirmación</button>
+            </form>
         </div>
     </section>
-
-    <!-- Enhanced Footer -->
-    <footer>
-        <div class="section-content">
-            <h3>¡Os esperamos con mucha ilusión!</h3>
-            <p>Marina & Luifer</p>
-            <p style="margin-top: 20px; font-size: 1.1rem; opacity: 0.9;">
-                Con amor, desde Barcelona 💕
-            </p>
-            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">
-                #MarinaYLuifer2025 | #NuestraBoda
-            </p>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title">¡Nos Vemos Pronto!</h2>
+            <p class="footer-date">Con amor, Marina & Luifer</p>
         </div>
+        <div class="footer-hearts">♥</div>
     </footer>
 
     <script>
-        // Remove loader when page is loaded
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                const loader = document.getElementById('loader');
-                loader.style.opacity = '0';
-                setTimeout(() => loader.style.display = 'none', 500);
-            }, 1000);
-        });
-
-        // Parallax effect for hero background
-        let ticking = false;
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const heroBg = document.getElementById('hero-bg');
-            const speed = 0.5;
-            
-            if (heroBg) {
-                heroBg.style.transform = `translateY(${scrolled * speed}px)`;
-            }
-            
-            ticking = false;
-        }
-
-        function requestTick() {
-            if (!ticking) {
-                window.requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        }
-
-        window.addEventListener('scroll', requestTick);
-
-        // Navigation scroll behavior
-        const nav = document.getElementById('nav');
-        let lastScroll = 0;
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-            
-            lastScroll = currentScroll;
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const navHeight = nav.offsetHeight;
-                    const targetPosition = target.offsetTop - navHeight - 30;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Loader logic
+            const loader = document.getElementById('loader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                }, 500); // Small delay for a smoother transition
             });
-        });
 
-        // Intersection Observer for reveal animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Animate timeline items with delay
-                    if (entry.target.classList.contains('section-content')) {
-                        const timelineItems = entry.target.querySelectorAll('.timeline-item, .story-item');
-                        timelineItems.forEach((item, index) => {
-                            setTimeout(() => {
-                                item.classList.add('visible');
-                            }, index * 150);
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 80; // Nav height
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
                         });
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections
-        document.querySelectorAll('.section-content').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Create floating hearts
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = ['❤️', '💕', '💖', '💗', '💝'][Math.floor(Math.random() * 5)];
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-            heart.style.animationDuration = Math.random() * 3 + 5 + 's';
-            heart.style.animationDelay = Math.random() * 2 + 's';
-            
-            document.getElementById('floating-hearts').appendChild(heart);
-            
-            setTimeout(() => heart.remove(), 8000);
-        }
-
-        // Create initial hearts
-        for (let i = 0; i < 5; i++) {
-            setTimeout(createHeart, i * 1000);
-        }
-
-        // Continue creating hearts
-        setInterval(createHeart, 3000);
-
-        // RSVP button interaction
-        function handleRSVP(e) {
-            e.preventDefault();
-            // Aquí puedes añadir la lógica para el formulario RSVP
-            // Por ejemplo, abrir un modal o redirigir a un formulario
-            alert('¡Gracias por tu interés! El formulario de confirmación estará disponible pronto.');
-        }
-
-        // Add touch support for hover effects on mobile
-        document.addEventListener('touchstart', function() {}, {passive: true});
-
-        // Lazy loading for images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.src;
-                        img.classList.add('loaded');
-                        imageObserver.unobserve(img);
                     }
                 });
             });
+            
+            // Intersection Observer for reveal-on-scroll animations
+            const revealElements = document.querySelectorAll('.hero-content, .section-header, .event-card, .gifts-content, .polaroid-card, .form-container');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
 
-            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-                imageObserver.observe(img);
+            revealElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(40px)';
+                el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                revealObserver.observe(el);
             });
-        }
+            
+            // Confetti effect
+            const confettiContainer = document.getElementById('confetti-container');
+            const colors = ['--retro-coral', '--retro-teal', '--retro-gold', '--retro-red'];
+            
+            function createConfetti() {
+                for (let i = 0; i < 15; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.background = `var(${randomColor})`;
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    const duration = Math.random() * 4 + 5; // 5 to 9 seconds
+                    confetti.style.animation = `fall ${duration}s linear`;
+                    confetti.style.animationDelay = `${Math.random() * 2}s`;
+                    confetti.style.opacity = Math.random() * 0.5 + 0.5;
+                    confettiContainer.appendChild(confetti);
 
-        // Add sparkle effect on mouse move
-        let mouseTimer;
-        document.addEventListener('mousemove', (e) => {
-            clearTimeout(mouseTimer);
-            mouseTimer = setTimeout(() => {
-                createSparkle(e.pageX, e.pageY);
-            }, 100);
+                    setTimeout(() => confetti.remove(), duration * 1000);
+                }
+            }
+            createConfetti();
+            
+            // RSVP Form Logic
+            const acompananteSi = document.getElementById('acompanante-si');
+            const acompananteNo = document.getElementById('acompanante-no');
+            const nombreAcompananteField = document.getElementById('nombre-acompanante-field');
+
+            const alergiasSi = document.getElementById('alergias-si');
+            const alergiasNo = document.getElementById('alergias-no');
+            const alergiasDetallesField = document.getElementById('alergias-detalles-field');
+
+            acompananteSi.addEventListener('change', () => {
+                if(acompananteSi.checked) nombreAcompananteField.style.display = 'block';
+            });
+            acompananteNo.addEventListener('change', () => {
+                 if(acompananteNo.checked) nombreAcompananteField.style.display = 'none';
+            });
+             alergiasSi.addEventListener('change', () => {
+                if(alergiasSi.checked) alergiasDetallesField.style.display = 'block';
+            });
+             alergiasNo.addEventListener('change', () => {
+                if(alergiasNo.checked) alergiasDetallesField.style.display = 'none';
+            });
+            
+            const rsvpForm = document.getElementById('rsvp-form');
+            rsvpForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('¡Gracias por confirmar! Hemos recibido tus respuestas. 🎉');
+                rsvpForm.reset();
+                nombreAcompananteField.style.display = 'none';
+                alergiasDetallesField.style.display = 'none';
+            });
         });
-
-        function createSparkle(x, y) {
-            const sparkle = document.createElement('div');
-            sparkle.style.position = 'absolute';
-            sparkle.style.left = x + 'px';
-            sparkle.style.top = y + 'px';
-            sparkle.style.pointerEvents = 'none';
-            sparkle.style.fontSize = '20px';
-            sparkle.style.zIndex = '9999';
-            sparkle.innerHTML = '✨';
-            sparkle.style.animation = 'float-heart 1s ease-out forwards';
-            document.body.appendChild(sparkle);
-            
-            setTimeout(() => sparkle.remove(), 1000);
-        }
-
-        // Dynamic date countdown (optional)
-        function updateCountdown() {
-            const weddingDate = new Date('2025-07-26T12:30:00');
-            const now = new Date();
-            const difference = weddingDate - now;
-            
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                
-                // You can display this countdown somewhere if needed
-                console.log(`Faltan ${days} días y ${hours} horas para el gran día!`);
-            }
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 60000); // Update every minute
-
-        // Mobile menu hint animation
-        const navUl = document.querySelector('.nav-wrapper ul');
-        if (navUl.scrollWidth > navUl.clientWidth) {
-            setTimeout(() => {
-                navUl.scrollLeft = 50;
-                setTimeout(() => {
-                    navUl.scrollLeft = 0;
-                }, 300);
-            }, 2000);
-        }
-
-        // Performance optimization: Throttle scroll events
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            if (scrollTimeout) {
-                window.cancelAnimationFrame(scrollTimeout);
-            }
-            scrollTimeout = window.requestAnimationFrame(() => {
-                requestTick();
-            });
-        }, { passive: true });
     </script>
 </body>
 </html>
+<!-- Photo Gallery Section -->
+<section class="gallery-section">
+    <div class="gallery-header">
+        <div class="gallery-title-wrapper">
+            <div class="film-strip-decoration"></div>
+            <h3 class="gallery-title">Nuestros Momentos</h3>
+            <div class="subtitle-badge">¡8 FOTOS DE PURO AMOR!</div>
+        </div>
+    </div>
+    
+    <div class="carousel-container">
+        <div class="film-reel-top"></div>
+        
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">
+                <span>◀</span>
+            </button>
+            
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Photo 1 -->
+                <div class="photo-frame active">
+                    <div class="photo-number">01</div>
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_2390-300x225.jpg" alt="Momento 1">
+                    <div class="photo-caption">Primer encuentro</div>
+                    <div class="photo-corner tl"></div>
+                    <div class="photo-corner tr"></div>
+                    <div class="photo-corner bl"></div>
+                    <div class="photo-corner br"></div>
+                </div>
+                
+                <!-- Photo 2 -->
+                <div class="photo-frame">
+                    <div class="photo-number">02</div>
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_20190124_174139_1-300x225.jpg" alt="Momento 2">
+                    <div class="photo-caption">Primera cita</div>
+                    <div class="photo-corner tl"></div>
+                    <div class="photo-corner tr"></div>
+                    <div class="photo-corner bl"></div>
+                    <div class="photo-corner br"></div>
+                </div>
+                
+                <!-- Photo 3 -->
+                <div class="photo-frame">
+                    <div class="photo-number">03</div>
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_4837-169x300.jpg" alt="Momento 3">
+                    <div class="photo-caption">Aventuras juntos</div>
+                    <div class="photo-corner tl"></div>
+                    <div class="photo-corner tr"></div>
+                    <div class="photo-corner bl"></div>
+                    <div class="photo-corner br"></div>
+                </div>
+                
+                <!-- Photo 4 -->
+                <div class="photo-frame">
+                    <div class="photo-number">04</div>
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/venecia-1-300x225.jpg" alt="Momento 4">
+                    <div class="photo-caption">Risas infinitas</div>
+                    <div class="photo-corner tl"></div>
+                    <div class="photo-corner tr"></div>
+                    <div class="photo-corner bl"></div>
+                    <div class="photo-corner br"></div>
+                </div>
+                
+                <!-- Photo 5 -->
+                <div class="photo-frame">
+                    <div class="photo-number">05</div>
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/0O6A3509-1-300x300.jpg" alt="Momento 5">
+                    <div class="photo-caption">Viajes y sueños</div>
+                    <div class="photo-corner tl"></div>
+                    <div class="photo-corner tr"></div>
+                    <div class="photo-corner bl"></div>
+                    <div class="photo-corner br"></div>
+                </div>
+                
+                <!-- Photo 6 -->
+                <div class="photo-frame">
+                    <div class="photo-number">06</div>
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_20190127_141743-300x225.jpg" alt="Momento 6">
+                    <div class="photo-caption">La propuesta</div>
+                    <div class="photo-corner tl"></div>
+                    <div class="photo-corner tr"></div>
+                    <div class="photo-corner bl"></div>
+                    <div class="photo-corner br"></div>
+                </div>
+                
+                <!-- Photo 7 -->
+                <div class="photo-frame">
+                    <div class="photo-number">07</div>
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_20190127_124453-300x225.jpg" alt="Momento 7">
+                    <div class="photo-caption">Preparativos</div>
+                    <div class="photo-corner tl"></div>
+                    <div class="photo-corner tr"></div>
+                    <div class="photo-corner bl"></div>
+                    <div class="photo-corner br"></div>
+                </div>
+                
+                <!-- Photo 8 -->
+                <div class="photo-frame">
+                    <div class="photo-number">08</div>
+                    <img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_5466-169x300.jpg" alt="Momento 8">
+                    <div class="photo-caption">¡Seremos tres!</div>
+                    <div class="photo-corner tl"></div>
+                    <div class="photo-corner tr"></div>
+                    <div class="photo-corner bl"></div>
+                    <div class="photo-corner br"></div>
+                </div>
+            </div>
+            
+            <button class="carousel-btn next-btn" onclick="moveCarousel(1)">
+                <span>▶</span>
+            </button>
+        </div>
+        
+        <div class="film-reel-bottom"></div>
+        
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <span class="indicator active" onclick="goToSlide(0)"></span>
+            <span class="indicator" onclick="goToSlide(1)"></span>
+            <span class="indicator" onclick="goToSlide(2)"></span>
+            <span class="indicator" onclick="goToSlide(3)"></span>
+            <span class="indicator" onclick="goToSlide(4)"></span>
+            <span class="indicator" onclick="goToSlide(5)"></span>
+            <span class="indicator" onclick="goToSlide(6)"></span>
+            <span class="indicator" onclick="goToSlide(7)"></span>
+        </div>
+    </div>
+    
+    <div class="gallery-decoration">
+        <span class="deco-text left">LOVE</span>
+        <span class="deco-heart">♥</span>
+        <span class="deco-text right">STORY</span>
+    </div>
+</section>
+
+<style>
+/* Gallery Section Styles */
+.gallery-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, var(--retro-coral) 0%, var(--retro-cream) 50%, var(--retro-mint) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.gallery-title-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.film-strip-decoration {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 40px;
+    background: #333;
+    border-radius: 5px;
+}
+
+.film-strip-decoration::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    right: 10px;
+    height: 20px;
+    transform: translateY(-50%);
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 8px,
+        white 8px,
+        white 12px
+    );
+}
+
+.gallery-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3.5rem;
+    color: var(--retro-brown);
+    text-shadow: 4px 4px 0 white;
+    margin: 20px 0;
+}
+
+.subtitle-badge {
+    background: var(--retro-red);
+    color: white;
+    padding: 10px 30px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    display: inline-block;
+    transform: rotate(-3deg);
+    box-shadow: 3px 3px 0 var(--retro-brown);
+}
+
+/* Carousel Container */
+.carousel-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.film-reel-top,
+.film-reel-bottom {
+    height: 30px;
+    background: #333;
+    position: relative;
+    margin: 0 -20px;
+}
+
+.film-reel-top::before,
+.film-reel-bottom::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: repeating-linear-gradient(
+        90deg,
+        #333,
+        #333 10px,
+        white 10px,
+        white 15px,
+        #333 15px,
+        #333 20px,
+        white 20px,
+        white 25px
+    );
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+    position: relative;
+    background: var(--retro-brown);
+    padding: 20px;
+    margin: -5px 0;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 500px;
+}
+
+/* Photo Frames */
+.photo-frame {
+    position: absolute;
+    width: 400px;
+    height: 450px;
+    background: white;
+    padding: 20px 20px 60px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateX(100%) rotate(5deg) scale(0.8);
+}
+
+.photo-frame.active {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg) scale(1);
+    z-index: 10;
+}
+
+.photo-frame.prev {
+    opacity: 0.7;
+    transform: translateX(-80%) rotate(-10deg) scale(0.9);
+    z-index: 5;
+}
+
+.photo-frame.next {
+    opacity: 0.7;
+    transform: translateX(80%) rotate(10deg) scale(0.9);
+    z-index: 5;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    filter: contrast(1.1) saturate(1.1);
+}
+
+.photo-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background: var(--retro-red);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    color: var(--retro-brown);
+    letter-spacing: 2px;
+}
+
+/* Photo Corners */
+.photo-corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--retro-gold);
+}
+
+.photo-corner.tl {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.photo-corner.tr {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.photo-corner.bl {
+    bottom: 50px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+}
+
+.photo-corner.br {
+    bottom: 50px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--retro-teal);
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.carousel-btn:hover {
+    background: var(--retro-coral);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.prev-btn {
+    left: -80px;
+}
+
+.next-btn {
+    right: -80px;
+}
+
+/* Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--retro-brown);
+    opacity: 0.3;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.indicator.active {
+    opacity: 1;
+    background: var(--retro-red);
+    transform: scale(1.5);
+}
+
+/* Gallery Decoration */
+.gallery-decoration {
+    text-align: center;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.deco-text {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    color: var(--retro-brown);
+    letter-spacing: 3px;
+}
+
+.deco-heart {
+    font-size: 3rem;
+    color: var(--retro-red);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
+    }
+    
+    .photo-frame {
+        width: 280px;
+        height: 350px;
+        padding: 15px 15px 50px;
+    }
+    
+    .photo-frame img {
+        height: 250px;
+    }
+    
+    .carousel-track {
+        height: 400px;
+    }
+    
+    .gallery-title {
+        font-size: 2.5rem;
+    }
+}
+</style>
+
+<script>
+let currentSlide = 0;
+const totalSlides = 8;
+
+function updateCarousel() {
+    const frames = document.querySelectorAll('.photo-frame');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    frames.forEach((frame, index) => {
+        frame.classList.remove('active', 'prev', 'next');
+        
+        if (index === currentSlide) {
+            frame.classList.add('active');
+        } else if (index === (currentSlide - 1 + totalSlides) % totalSlides) {
+            frame.classList.add('prev');
+        } else if (index === (currentSlide + 1) % totalSlides) {
+            frame.classList.add('next');
+        }
+    });
+    
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function moveCarousel(direction) {
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    updateCarousel();
+}
+
+function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
+    updateCarousel();
+}
+
+// Auto-play carousel
+setInterval(() => {
+    moveCarousel(1);
+}, 5000);
+
+// Initialize
+updateCarousel();
+</script>
+<!-- Timeline Section -->
+<section class="timeline-section">
+    <div class="timeline-header">
+        <div class="vintage-clock">
+            <div class="clock-hand hour-hand"></div>
+            <div class="clock-hand minute-hand"></div>
+            <div class="clock-center"></div>
+        </div>
+        <h3 class="timeline-title">Horario del Gran Día</h3>
+        <div class="timeline-subtitle">1 de Mayo 2026 • Masia Can Oliver</div>
+    </div>
+    
+    <div class="timeline-container">
+        <div class="timeline-track">
+            <div class="train-decoration">🚂</div>
+        </div>
+        
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="time-badge">12:30</div>
+                <div class="timeline-card">
+                    <div class="card-icon">🥂</div>
+                    <h4>Recepción y aperitivos de bienvenida</h4>
+                    <div class="card-decoration"></div>
+                </div>
+            </div>
+            <div class="timeline-dot">
+                <div class="dot-pulse"></div>
+            </div>
+        </div>
+        
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <div class="time-badge">14:00</div>
+                <div class="timeline-card">
+                    <div class="card-icon">🍴</div>
+                    <h4>Banquete nupcial</h4>
+                    <div class="card-decoration"></div>
+                </div>
+            </div>
+            <div class="timeline-dot">
+                <div class="dot-pulse"></div>
+            </div>
+        </div>
+        
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="time-badge">17:00</div>
+                <div class="timeline-card">
+                    <div class="card-icon">🎮</div>
+                    <h4>Juegos y actividades sorpresa</h4>
+                    <div class="card-decoration"></div>
+                </div>
+            </div>
+            <div class="timeline-dot">
+                <div class="dot-pulse"></div>
+            </div>
+        </div>
+        
+        <!-- Timeline Item 4 -->
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <div class="time-badge">19:00</div>
+                <div class="timeline-card">
+                    <div class="card-icon">💃</div>
+                    <h4>¡Baile y fiesta hasta el amanecer!</h4>
+                    <div class="card-decoration"></div>
+                </div>
+            </div>
+            <div class="timeline-dot">
+                <div class="dot-pulse"></div>
+            </div>
+        </div>
+        
+        <!-- Timeline Item 5 -->
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="time-badge">02:00</div>
+                <div class="timeline-card special">
+                    <div class="card-icon">🌙</div>
+                    <h4>Fin de la celebración</h4>
+                    <p>(para los que aguanten 😉)</p>
+                    <div class="card-decoration"></div>
+                </div>
+            </div>
+            <div class="timeline-dot final">
+                <div class="dot-pulse"></div>
+            </div>
+        </div>
+        
+        <div class="timeline-end">
+            <div class="end-flourish">✦ ✦ ✦</div>
+        </div>
+    </div>
+    
+    <!-- Decorative Elements -->
+    <div class="floating-music-notes">
+        <span class="note note-1">♪</span>
+        <span class="note note-2">♫</span>
+        <span class="note note-3">♪</span>
+        <span class="note note-4">♬</span>
+    </div>
+</section>
+
+<style>
+/* Timeline Section */
+.timeline-section {
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #FFF5E6 0%, var(--retro-cream) 50%, #FAE5D3 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Timeline Header */
+.timeline-header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.vintage-clock {
+    width: 100px;
+    height: 100px;
+    background: var(--retro-brown);
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    position: relative;
+    box-shadow: 
+        0 0 0 8px var(--retro-gold),
+        0 0 0 10px var(--retro-brown),
+        0 10px 30px rgba(0,0,0,0.3);
+    animation: tick-tock 4s ease-in-out infinite;
+}
+
+@keyframes tick-tock {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.clock-hand {
+    position: absolute;
+    background: var(--retro-cream);
+    transform-origin: bottom center;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hour-hand {
+    width: 4px;
+    height: 25px;
+    animation: rotate-hour 120s linear infinite;
+}
+
+.minute-hand {
+    width: 3px;
+    height: 35px;
+    animation: rotate-minute 10s linear infinite;
+}
+
+.clock-center {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--retro-gold);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes rotate-hour {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes rotate-minute {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(360deg); }
+}
+
+.timeline-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3.5rem;
+    color: var(--retro-red);
+    text-shadow: 3px 3px 0 var(--retro-coral);
+    margin-bottom: 15px;
+    transform: rotate(-2deg);
+    display: inline-block;
+}
+
+.timeline-subtitle {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    color: var(--retro-teal);
+    letter-spacing: 2px;
+}
+
+/* Timeline Container */
+.timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--retro-brown);
+    transform: translateX(-50%);
+    box-shadow: 
+        inset 0 0 0 1px var(--retro-gold),
+        0 0 20px rgba(0,0,0,0.1);
+}
+
+.timeline-track::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: var(--retro-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--retro-brown);
+}
+
+.train-decoration {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    animation: choo-choo 20s linear infinite;
+}
+
+@keyframes choo-choo {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-10deg); }
+    75% { transform: translateX(-50%) rotate(10deg); }
+    100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+/* Timeline Items */
+.timeline-item {
+    position: relative;
+    padding: 40px 0;
+    width: 100%;
+    opacity: 0;
+    animation: fadeInScale 0.8s ease-out forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+.timeline-item:nth-child(4) { animation-delay: 0.8s; }
+.timeline-item:nth-child(5) { animation-delay: 1s; }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.timeline-content {
+    position: relative;
+    width: 45%;
+}
+
+.timeline-item.left .timeline-content {
+    float: left;
+    text-align: right;
+}
+
+.timeline-item.right .timeline-content {
+    float: right;
+    text-align: left;
+    margin-left: 55%;
+}
+
+/* Timeline Dot */
+.timeline-dot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: var(--retro-coral);
+    border: 4px solid var(--retro-cream);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    box-shadow: 0 0 0 3px var(--retro-brown);
+}
+
+.timeline-dot.final {
+    background: var(--retro-gold);
+    width: 40px;
+    height: 40px;
+}
+
+.dot-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Time Badge */
+.time-badge {
+    display: inline-block;
+    background: var(--retro-red);
+    color: white;
+    padding: 10px 25px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    position: relative;
+    box-shadow: 5px 5px 0 var(--retro-brown);
+    transform: rotate(-3deg);
+}
+
+.timeline-item.right .time-badge {
+    transform: rotate(3deg);
+}
+
+/* Timeline Card */
+.timeline-card {
+    background: white;
+    border: 3px solid var(--retro-brown);
+    padding: 30px;
+    position: relative;
+    box-shadow: 8px 8px 0 var(--retro-teal);
+    transition: all 0.3s;
+    transform: rotate(-1deg);
+}
+
+.timeline-item.right .timeline-card {
+    transform: rotate(1deg);
+}
+
+.timeline-card:hover {
+    transform: rotate(0deg) translateY(-5px);
+    box-shadow: 10px 10px 0 var(--retro-teal);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: inline-block;
+    animation: icon-bounce 3s ease-in-out infinite;
+}
+
+@keyframes icon-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.timeline-card h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: var(--retro-brown);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timeline-card p {
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.8rem;
+    color: var(--retro-teal);
+    margin: 10px 0 0;
+    letter-spacing: 1px;
+}
+
+.timeline-card.special {
+    background: linear-gradient(135deg, #FAF3E0 0%, #F0E6D2 100%);
+    border-color: var(--retro-gold);
+}
+
+.card-decoration {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background: var(--retro-gold);
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+/* Timeline End */
+.timeline-end {
+    text-align: center;
+    padding-top: 60px;
+}
+
+.end-flourish {
+    font-size: 2rem;
+    color: var(--retro-gold);
+    letter-spacing: 10px;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Floating Music Notes */
+.floating-music-notes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.note {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--retro-coral);
+    opacity: 0.3;
+    animation: float-note 15s infinite;
+}
+
+.note-1 { left: 10%; animation-delay: 0s; }
+.note-2 { left: 30%; animation-delay: 3s; }
+.note-3 { right: 20%; animation-delay: 6s; }
+.note-4 { right: 10%; animation-delay: 9s; }
+
+@keyframes float-note {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.3; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline-content {
+        width: 85%;
+    }
+    
+    .timeline-item.left .timeline-content,
+    .timeline-item.right .timeline-content {
+        float: none;
+        margin-left: 15%;
+        text-align: left;
+    }
+    
+    .timeline-track {
+        left: 30px;
+    }
+    
+    .timeline-dot {
+        left: 30px;
+    }
+    
+    .timeline-title {
+        font-size: 2.5rem;
+    }
+    
+    .time-badge {
+        font-size: 1.5rem;
+    }
+    
+    .timeline-card h4 {
+        font-size: 1.2rem;
+    }
+}
+</style>
