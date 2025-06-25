@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marina & Luifer - Nuestra Historia de Amor</title>
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================[ Bloque: Pantalla de Carga ]========================== -->
+    <div class="loader" id="loader">
+        <div class="loader-heart">♥</div>
+    </div>
+    
+    <!-- Contenedor para efectos especiales como confeti -->
+    <div class="confetti-container" id="confetti-container"></div>
+    
+    <!-- ==========================[ Bloque: Cabecera y Navegación ]========================== -->
+    <header>
+        <nav class="nav-wrapper">
+            <div class="nav-ribbon">
+                <div class="nav-content">
+                    <a href="#home" class="nav-item">Inicio</a>
+                    <a href="#gallery" class="nav-item">Fotos</a>
+                    <a href="#events" class="nav-item">Eventos</a>
+                    <a href="#timeline" class="nav-item">Horario</a>
+                    <a href="#dresscode" class="nav-item">Dress Code</a>
+                    <a href="#gifts" class="nav-item">Regalos</a>
+                    <a href="#confirmacion" class="nav-item">Confirmar</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- ==========================[ Fin Bloque: Cabecera y Navegación ]====================== -->
+
+
+    <!-- ==========================[ Bloque: Contenido Principal ]========================== -->
+    <main>
+        
+        <!-- ========== Sección: Hero (Inicio) ========== -->
+        <section id="home" class="hero">
+            <div class="sunburst"></div>
+            
+            <div class="hero-content">
+                <div class="photo-collage">
+                    <div class="main-photo">
+                        <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda-fondo-movil-300x300.jpg" alt="Marina y Luifer">
+                    </div>
+                    <div class="stamp stamp-1">
+                        <span>¡NOS<br>CASAMOS!</span>
+                    </div>
+                    <div class="stamp stamp-2">
+                        <span>SAVE<br>THE<br>DATE</span>
+                    </div>
+                </div>
+                
+                <div class="hero-title">
+                    <h2>Marina & Luifer</h2>
+                </div>
+                <p class="hero-subtitle">Una historia de amor en dos actos</p>
+            </div>
+        </section>
+        <!-- ========== Fin Sección: Hero ========== -->
+
+        <!-- ========== Sección: Galería de Fotos ========== -->
+        <section id="gallery" class="gallery-section">
+            <div class="gallery-header">
+                <div class="gallery-title-wrapper">
+                    <div class="film-strip-decoration"></div>
+                    <h3 class="gallery-title">Nuestros Momentos</h3>
+                    <div class="subtitle-badge">¡8 FOTOS DE PURO AMOR!</div>
+                </div>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="film-reel-top"></div>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)"><span>◀</span></button>
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Photos will be managed by JS -->
+                        <div class="photo-frame"><div class="photo-number">01</div><img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_20190127_124453-scaled-e1750028295384.jpg" alt="Momento 1"><div class="photo-caption">Primer encuentro</div><div class="photo-corner tl"></div><div class="photo-corner tr"></div><div class="photo-corner bl"></div><div class="photo-corner br"></div></div>
+                        <div class="photo-frame"><div class="photo-number">02</div><img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_20190124_174139_1-scaled.jpg" alt="Momento 2"><div class="photo-caption">Primera cita</div><div class="photo-corner tl"></div><div class="photo-corner tr"></div><div class="photo-corner bl"></div><div class="photo-corner br"></div></div>
+                        <div class="photo-frame"><div class="photo-number">03</div><img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_4837-scaled.jpg" alt="Momento 3"><div class="photo-caption">Aventuras juntos</div><div class="photo-corner tl"></div><div class="photo-corner tr"></div><div class="photo-corner bl"></div><div class="photo-corner br"></div></div>
+                        <div class="photo-frame"><div class="photo-number">04</div><img src="https://detectiveclub.es/wp-content/uploads/2025/06/venecia-1-scaled.jpg" alt="Momento 4"><div class="photo-caption">Risas infinitas</div><div class="photo-corner tl"></div><div class="photo-corner tr"></div><div class="photo-corner bl"></div><div class="photo-corner br"></div></div>
+                        <div class="photo-frame"><div class="photo-number">05</div><img src="https://detectiveclub.es/wp-content/uploads/2025/06/0O6A3509-1-300x300.jpg" alt="Momento 5"><div class="photo-caption">Viajes y sueños</div><div class="photo-corner tl"></div><div class="photo-corner tr"></div><div class="photo-corner bl"></div><div class="photo-corner br"></div></div>
+                        <div class="photo-frame"><div class="photo-number">06</div><img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_20190127_141743-scaled.jpg" alt="Momento 6"><div class="photo-caption">La propuesta</div><div class="photo-corner tl"></div><div class="photo-corner tr"></div><div class="photo-corner bl"></div><div class="photo-corner br"></div></div>
+                        <div class="photo-frame"><div class="photo-number">07</div><img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_0768-scaled.jpg" alt="Momento 7"><div class="photo-caption">Preparativos</div><div class="photo-corner tl"></div><div class="photo-corner tr"></div><div class="photo-corner bl"></div><div class="photo-corner br"></div></div>
+                        <div class="photo-frame"><div class="photo-number">08</div><img src="https://detectiveclub.es/wp-content/uploads/2025/06/IMG_5466-scaled.jpg" alt="Momento 8"><div class="photo-caption">¡Seremos tres!</div><div class="photo-corner tl"></div><div class="photo-corner tr"></div><div class="photo-corner bl"></div><div class="photo-corner br"></div></div>
+                    </div>
+                    <button class="carousel-btn next-btn" onclick="moveCarousel(1)"><span>▶</span></button>
+                </div>
+                <div class="film-reel-bottom"></div>
+                <div class="carousel-indicators">
+                    <!-- Indicators will be managed by JS -->
+                    <span class="indicator" onclick="goToSlide(0)"></span><span class="indicator" onclick="goToSlide(1)"></span><span class="indicator" onclick="goToSlide(2)"></span><span class="indicator" onclick="goToSlide(3)"></span><span class="indicator" onclick="goToSlide(4)"></span><span class="indicator" onclick="goToSlide(5)"></span><span class="indicator" onclick="goToSlide(6)"></span><span class="indicator" onclick="goToSlide(7)"></span>
+                </div>
+            </div>
+            
+            <div class="gallery-decoration">
+                <span class="deco-text left">LOVE</span><span class="deco-heart">♥</span><span class="deco-text right">STORY</span>
+            </div>
+        </section>
+        <!-- ========== Fin Sección: Galería de Fotos ========== -->
+
+        <!-- ========== Sección: Eventos ========== -->
+        <section id="events" class="events-section">
+            <div class="section-header">
+                <h3 class="ribbon-banner">NUESTROS EVENTOS</h3>
+            </div>
+            
+            <div class="events-container">
+                <!-- Ceremony Card -->
+                <div class="event-card">
+                    <div class="event-stamp">ACTO I</div>
+                    <div class="event-image-wrapper">
+                        <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda_benasque-300x229.png" alt="Parroquia de Benasque" class="event-image">
+                    </div>
+                    <div class="event-details">
+                        <h4 class="event-title">La Ceremonia</h4>
+                        <p class="event-date">26 de Julio, 2025</p>
+                        <p class="event-location">Parroquia de Benasque • 16:00h</p>
+                        <p class="event-description">
+                            "Se trata únicamente de la ceremonia, no hay fiesta. No queremos que te sientas con la obligación de tener que venir lejos. Pero si vienes, ¡ya haremos para pasarlo bien!"
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Party Card -->
+                <div class="event-card">
+                    <div class="event-stamp">ACTO II</div>
+                    <div class="event-image-wrapper">
+                        <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda-can-oliver.png" alt="Masia Can Oliver" class="event-image">
+                    </div>
+                    <div class="event-details">
+                        <h4 class="event-title">¡Fiesta de Primavera!</h4>
+                        <p class="event-date">1 de Mayo, 2026</p>
+                        <p class="event-location">Masia Can Oliver • 12:30h</p>
+                        <p class="event-description">
+                            "¡Muy cerca de Barcelona! Hay parking allí mismo. Habrá mucha comida y ganas de divertirnos juntos. ¡Fiesta de primavera!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== Fin Sección: Eventos ========== -->
+
+        <!-- ========== Sección: Horario (Timeline) ========== -->
+        <section id="timeline" class="timeline-section">
+            <div class="timeline-header">
+                <div class="vintage-clock">
+                    <div class="clock-hand hour-hand"></div>
+                    <div class="clock-hand minute-hand"></div>
+                    <div class="clock-center"></div>
+                </div>
+                <h3 class="timeline-title">Horario del Gran Día</h3>
+                <div class="timeline-subtitle">1 de Mayo 2026 • Masia Can Oliver</div>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-track">
+                    <div class="train-decoration">🚂</div>
+                </div>
+                
+                <!-- Timeline Items -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="time-badge">12:30</div>
+                        <div class="timeline-card">
+                            <div class="card-icon">🥂</div>
+                            <h4>Recepción y aperitivos de bienvenida</h4>
+                            <div class="card-decoration"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-dot">
+                        <div class="dot-pulse"></div>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="time-badge">14:00</div>
+                        <div class="timeline-card">
+                            <div class="card-icon">🍴</div>
+                            <h4>Banquete nupcial</h4>
+                            <div class="card-decoration"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-dot">
+                        <div class="dot-pulse"></div>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="time-badge">17:00</div>
+                        <div class="timeline-card">
+                            <div class="card-icon">🎮</div>
+                            <h4>Juegos y actividades sorpresa</h4>
+                            <div class="card-decoration"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-dot">
+                        <div class="dot-pulse"></div>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="time-badge">19:00</div>
+                        <div class="timeline-card">
+                            <div class="card-icon">💃</div>
+                            <h4>¡Baile y fiesta hasta el amanecer!</h4>
+                            <div class="card-decoration"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-dot">
+                        <div class="dot-pulse"></div>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="time-badge">02:00</div>
+                        <div class="timeline-card special">
+                            <div class="card-icon">🌙</div>
+                            <h4>Fin de la celebración</h4>
+                            <p>(para los que aguanten 😉)</p>
+                            <div class="card-decoration"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-dot final">
+                        <div class="dot-pulse"></div>
+                    </div>
+                </div>
+                
+                <div class="timeline-end">
+                    <div class="end-flourish">✦ ✦ ✦</div>
+                </div>
+            </div>
+            
+            <div class="floating-music-notes">
+                <span class="note note-1">♪</span><span class="note note-2">♫</span><span class="note note-3">♪</span><span class="note note-4">♬</span>
+            </div>
+        </section>
+        <!-- ========== Fin Sección: Horario ========== -->
+
+        <!-- ========== Sección: Dress Code ========== -->
+        <section id="dresscode" class="dresscode-section">
+            <div class="section-header">
+                <h3 class="ribbon-banner">DRESS CODE</h3>
+            </div>
+            <div class="polaroid-card">
+                <div class="polaroid-pin">📌</div>
+                <h3>👗🌺 Alegre & Primaveral</h3>
+                <p>Queremos veros radiantes con ropa alegre y apta para el calor del verano y el gustito de la primavera. ¡No vengáis todo de colores neutros, traed al menos un complemento de color llamativo! 🪭</p>
+                <div class="tip">
+                    💡 <strong>Tip:</strong> Una chaquetita ligera para el aire acondicionado no está de más.
+                </div>
+            </div>
+        </section>
+        <!-- ========== Fin Sección: Dress Code ========== -->
+
+        <!-- ========== Sección: Regalos ========== -->
+        <section id="gifts" class="gifts-section">
+            <div class="gifts-content">
+                <div class="baby-illustration">👶</div>
+                <h3 class="gifts-title">Idea de regalo</h3>
+                <img src="https://detectiveclub.es/wp-content/uploads/2025/06/boda-coche-300x200.jpg" alt="Regalo vintage" style="width: 100%; max-width: 400px; margin: 20px auto; display: block; border: 5px solid var(--retro-cream); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                <div class="gift-message">
+                    <p>
+                        No cabemos tres en nuestra furgoneta, así que necesitamos comprar un coche familiar para llevar al peque... 
+                        Si te parece buena idea y quieres colaborar en nuestro cochecito lerée, aquí tienes los datos de nuestra cuenta conjunta.
+                    </p>
+                </div>
+                <div class="bank-account">
+                    <h4>Cuenta para el "Cochecito"</h4>
+                    <div class="account-number" id="account-number">ES12 3456 7890 1234 5678 9012</div>
+                    <button class="copy-btn" id="copy-account-btn" type="button">Copiar número</button>
+                </div>
+            </div>
+        </section>
+        <!-- ========== Fin Sección: Regalos ========== -->
+
+        <!-- ========== Sección: Confirmación (RSVP) ========== -->
+        <section id="confirmacion" class="rsvp-section">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>🥂 Confirmación de Asistencia</h2>
+                    <p>Por favor, rellena este formulario con sinceridad y mucho amor. ¡Nos hará mucha ilusión contar contigo! 💌</p>
+                </div>
+                <form id="rsvp-form">
+                    <div class="form-group">
+                        <label>¿Vas a venir a la ceremonia en Benasque?</label>
+                        <div class="radio-group">
+                            <input type="radio" id="ceremonia-si" name="ceremonia" value="si"><label for="ceremonia-si" class="btn-radio btn-si">Sí</label>
+                            <input type="radio" id="ceremonia-no" name="ceremonia" value="no"><label for="ceremonia-no" class="btn-radio btn-no">No</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Vas a venir a la celebración en Barcelona?</label>
+                        <div class="radio-group">
+                            <input type="radio" id="celebracion-si" name="celebracion" value="si"><label for="celebracion-si" class="btn-radio btn-si">Sí</label>
+                            <input type="radio" id="celebracion-no" name="celebracion" value="no"><label for="celebracion-no" class="btn-radio btn-no">No</label>
+                            <input type="radio" id="celebracion-duda" name="celebracion" value="duda"><label for="celebracion-duda" class="btn-radio btn-duda">Aún no lo sé</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Vas a venir con compañía?</label>
+                        <div class="radio-group">
+                            <input type="radio" id="acompanante-si" name="acompanante" value="si"><label for="acompanante-si" class="btn-radio btn-si">Sí</label>
+                            <input type="radio" id="acompanante-no" name="acompanante" value="no"><label for="acompanante-no" class="btn-radio btn-no">No</label>
+                        </div>
+                    </div>
+                    <div class="form-group hidden-field" id="nombre-acompanante-field">
+                        <label for="nombre-acompanante">¿Con quién vendrás? Por favor, indica su nombre completo.</label>
+                        <input type="text" id="nombre-acompanante" name="nombre-acompanante">
+                        <p class="form-note">📌 Importante: Tu acompañante también debe rellenar este formulario. Por favor, pídele que indique en su respuesta que viene de tu parte.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Tienes alguna intolerancia alimenticia o necesidad especial?</label>
+                        <div class="radio-group">
+                            <input type="radio" id="alergias-si" name="alergias" value="si"><label for="alergias-si" class="btn-radio btn-si">Sí</label>
+                            <input type="radio" id="alergias-no" name="alergias" value="no"><label for="alergias-no" class="btn-radio btn-no">No</label>
+                        </div>
+                    </div>
+                    <div class="form-group hidden-field" id="alergias-detalles-field">
+                        <label for="alergias-detalles">Por favor, indícanos cuáles:</label>
+                        <textarea id="alergias-detalles" name="alergias-detalles"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Confirmación</button>
+                </form>
+            </div>
+        </section>
+        <!-- ========== Fin Sección: Confirmación ========== -->
+
+    </main>
+    <!-- ==========================[ Fin Bloque: Contenido Principal ]====================== -->
+
+
+    <!-- ==========================[ Bloque: Pie de Página ]========================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title">¡Nos Vemos Pronto!</h2>
+            <p class="footer-date">Con amor, Marina & Luifer</p>
+        </div>
+        <div class="footer-hearts">♥</div>
+    </footer>
+    <!-- ==========================[ Fin Bloque: Pie de Página ]====================== -->
+
+    <!-- ==========================[ Bloque: Scripts ]========================== -->
+    <!-- Enlace al archivo de JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
